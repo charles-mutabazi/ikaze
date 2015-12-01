@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Captured GPS Coordinates</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Device</th>
+      <th>Longitude</th>
+      <th>Latitude</th>
+      <th>Created At</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gps_coordinates.each do |gps_coordinate| %>
+      <tr>
+        <td><%= gps_coordinate.device_id %></td>
+        <td><%= gps_coordinate.longitude %></td>
+        <td><%= gps_coordinate.latitude %></td>
+        <td><%= gps_coordinate.created_at %></td>
+        <td><%= link_to 'Destroy', gps_coordinate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'See Visuals', visuals_path %>
