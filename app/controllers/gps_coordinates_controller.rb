@@ -26,6 +26,6 @@ class GpsCoordinatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gps_coordinate_params
-      params.require(:gps_coordinate).permit(:device_id, :longitude, :latitude)
+      params.require(:gps_coordinate).permit(:device_id, :longitude, :latitude, :captured_at)
     end
 end

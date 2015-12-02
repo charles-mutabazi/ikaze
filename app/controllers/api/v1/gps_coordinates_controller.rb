@@ -27,7 +27,7 @@ module Api
 
 			private
       def gps_coordinate_params
-				params.require(:gps_coordinate).permit(:device_id, :longitude, :latitude)
+				params.require(:gps_coordinate).permit(:device_id, :longitude, :latitude, :captured_at)
       end
 
 

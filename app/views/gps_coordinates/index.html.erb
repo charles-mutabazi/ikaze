@@ -1,6 +1,17 @@
+<% if @gps_coordinates.empty? %>
+  <div class="empty-div">
+
+    <i class="glyphicon glyphicon-map-marker icon-above"></i>
+    <br>
+
+    List of GPS Coordinates will appear here!
+  </div>
+<% else %>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Captured GPS Coordinates</h1>
+
 
 <table class="table table-hover">
   <thead>
@@ -8,7 +19,8 @@
       <th>Device</th>
       <th>Longitude</th>
       <th>Latitude</th>
-      <th>Created At</th>
+      <th>Captured on</th>
+      <th>Added On</th>
       <th></th>
     </tr>
   </thead>
@@ -19,6 +31,7 @@
         <td><%= gps_coordinate.device_id %></td>
         <td><%= gps_coordinate.longitude %></td>
         <td><%= gps_coordinate.latitude %></td>
+        <td><%= gps_coordinate.captured_at %></td>
         <td><%= gps_coordinate.created_at %></td>
         <td><%= link_to 'Destroy', gps_coordinate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -28,3 +41,5 @@
 
 <br>
 <%= link_to 'See Visuals', visuals_path %>
+
+<%end%>
