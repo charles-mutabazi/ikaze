@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 		end
 	end
 
-  resources :gps_coordinates
+  resources :gps_coordinates do
+    collection do
+      get :remove_all
+    end
+  end
   resources :visuals
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

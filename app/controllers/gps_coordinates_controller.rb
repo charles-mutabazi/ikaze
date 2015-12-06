@@ -18,6 +18,12 @@ class GpsCoordinatesController < ApplicationController
     end
   end
 
+  def remove_all
+    GpsCoordinate.delete_all
+    flash[:notice] = "You have deleted all data!"
+    redirect_to gps_coordinates_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_gps_coordinate
