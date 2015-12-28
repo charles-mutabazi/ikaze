@@ -1,0 +1,89 @@
+<div class="post" id="post_<%=post.id%>">
+  <div class="row ">
+    <div class="col-xs-2" style="padding: 0">
+      <div class="user_image">
+        <%= image_tag post.user.avatar.url(:sm_thumb), class: "img-circle" %>
+        <div class="user_name">
+          <strong><%= link_to post.user.name, post.user %></strong>
+        </div>
+        <div class="time_ago">
+          <%= time_ago_in_words(post.created_at) %> ago
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-10" style="padding: 0">
+      <div class="post_decription">
+          <%= simple_format(post.content) %>
+      </div>
+
+      <!-- Voting section  -->
+      <div class="row">
+        <!-- <div class="col-xs-7"> -->
+          <span class="vote_counts">
+            <%= link_to like_post_path(post), id: "like-#{post.id}", method: :get, remote: true do %>
+            <span class="label label-success">
+              <i class="glyphicon glyphicon-thumbs-up"></i> <span id="up-votes-count-<%=post.id%>"> <%= post.up_votes_count %> </span>
+            </span>
+            <% end %>
+            &nbsp;&nbsp;
+            <%= link_to dislike_post_path(post), id: "dislike-#{post.id}",method: :get, remote: true do %>
+            <span class="label label-danger">
+              <i class="glyphicon glyphicon-thumbs-down"></i> <span id="down-votes-count-<%=post.id%>"><%= post.down_votes_count %></span>
+            </span>
+            <% end %>
+          </span>
+        <!-- </div> -->
+        <!-- EOF Voting section -->
+
+        <!-- Editing section -->
+        <div class="col-xs-4 pull-right" style="padding: 0">
+          <div class="pull-right">
+            <% if post.user == current_user %>
+            <%= link_to edit_post_path(post) do %>
+    					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+    				<% end %>
+            &nbsp;&nbsp;
+    				<%= link_to post_path(post), method: :delete, data: { confirm: 'Are you sure?'}, remote: true do %>
+    					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+    				<% end %>
+            <% end %>
+          </div>
+        </div>
+        <!-- EOF Editing section -->
+    </div>
+
+    </div>
+  </div>
+
+  <hr>
+
+  <%= link_to "#", id: "comments-link", 'data-post-id': "#comments-section-#{post.id}" do %>
+    <strong class="comment-count"><%= pluralize(post.comments.count, "Comment")%></strong>
+  <% end %>
+  <!-- Comment Section -->
+  <section id="comments-section-<%=post.id%>" style="display: none" class="comments-section">
+
+    <!-- the comment form -->
+    <% if user_signed_in? %>
+      <%= form_for([post, Comment.new], remote: true) do |f| %>
+        <div class="comment_textfield row">
+          <div class="col-xs-1">
+            <%= image_tag current_user.avatar.url(:sm_thumb), class: "img-rounded" %>
+          </div>
+          <div class="col-xs-11">
+            <%= f.text_field :content, :placeholder => "Add your comment...", id: "comment_content_#{post.id}" %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+
+    <div id="comments-<%=post.id %>">
+    <!-- render comments -->
+      <%= render post.comments %>
+    </div>
+
+
+</section>
+  <!-- EOF Comment section -->
+</div>

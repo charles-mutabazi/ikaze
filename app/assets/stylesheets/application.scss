@@ -9,56 +9,61 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
- *
+ *= require_tree .
+ *= require_self
+
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
-body {
-  padding-top: 50px;
+html, body{
+	// font-family: "Helvetica Neue", sans-serif;
+	// font-weight: 300;
+	// color: #9C27B0;
+	background-color: #fafafa;
 }
 
 a {
-  color: #BF360C;
-  text-decoration: none;
+	color: #4A148C;
 }
 
-.navbar-orange {
-  background-color: #FBE9E7;
-  border-color: #FF8A65;
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	margin: 10px 0;
 }
 
-.jumbotron {
-  background-color: hsl(34, 53%, 82%);
-background-image: repeating-linear-gradient(45deg, transparent 5px, hsla(197, 62%, 11%, 0.5) 5px, hsla(197, 62%, 11%, 0.5) 10px,
-  hsla(5, 53%, 63%, 0) 10px, hsla(5, 53%, 63%, 0) 35px, hsla(5, 53%, 63%, 0.5) 35px, hsla(5, 53%, 63%, 0.5) 40px,
-  hsla(197, 62%, 11%, 0.5) 40px, hsla(197, 62%, 11%, 0.5) 50px, hsla(197, 62%, 11%, 0) 50px, hsla(197, 62%, 11%, 0) 60px,
-  hsla(5, 53%, 63%, 0.5) 60px, hsla(5, 53%, 63%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 80px,
-  hsla(35, 91%, 65%, 0) 80px, hsla(35, 91%, 65%, 0) 90px, hsla(5, 53%, 63%, 0.5) 90px, hsla(5, 53%, 63%, 0.5) 110px,
-  hsla(5, 53%, 63%, 0) 110px, hsla(5, 53%, 63%, 0) 120px, hsla(197, 62%, 11%, 0.5) 120px, hsla(197, 62%, 11%, 0.5) 140px
-  ),
-repeating-linear-gradient(135deg, transparent 5px, hsla(197, 62%, 11%, 0.5) 5px, hsla(197, 62%, 11%, 0.5) 10px,
-  hsla(5, 53%, 63%, 0) 10px, hsla(5, 53%, 63%, 0) 35px, hsla(5, 53%, 63%, 0.5) 35px, hsla(5, 53%, 63%, 0.5) 40px,
-  hsla(197, 62%, 11%, 0.5) 40px, hsla(197, 62%, 11%, 0.5) 50px, hsla(197, 62%, 11%, 0) 50px, hsla(197, 62%, 11%, 0) 60px,
-  hsla(5, 53%, 63%, 0.5) 60px, hsla(5, 53%, 63%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 80px,
-  hsla(35, 91%, 65%, 0) 80px, hsla(35, 91%, 65%, 0) 90px, hsla(5, 53%, 63%, 0.5) 90px, hsla(5, 53%, 63%, 0.5) 110px,
-  hsla(5, 53%, 63%, 0) 110px, hsla(5, 53%, 63%, 0) 140px, hsla(197, 62%, 11%, 0.5) 140px, hsla(197, 62%, 11%, 0.5) 160px
-);
+.row {
+	margin: 0;
+}
+ .wrapper{
+	 padding: 60px 0 20px 0;
+ }
 
-min-height: 250px;
-
-  /*.btn-ikz {
-    color: #fff;
-    background-color: #E64A19;
-    border-color: #BF360C;
-  }
-  .btn-lg {
-    border-radius: 2px;
-  }*/
+input[type="submit"], button {
+	display: inline-block;
+	margin-bottom: 0;
+	text-align: center;
+	vertical-align: middle;
+	touch-action: manipulation;
+	cursor: pointer;
+	background: transparent;
+	border: 1px solid #4A148C;
+	white-space: nowrap;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	border-radius: 2px;
+	color: #4A148C;
 }
 
-/* change the site form */
-input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
+input[type="submit"]:hover, button:hover {
+	background: #4A148C;
+	color: #fff
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
 	display: block;
 	margin-bottom: 15px;
 	width: 100%;
@@ -66,26 +71,164 @@ input[type="text"], input[type="email"], input[type="password"], input[type="num
 	padding: 6px 12px;
 	font-size: 14px;
 	line-height: 1.42857143;
-	color: #0B1C1E;
+	// color: #9C27B0;
 	background-color: #fff;
 	background-image: none;
 	border: 1px solid #ccc;
 	border-radius: 2px;
 }
 
-input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus, input[type="number"]:focus {
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus {
 	outline: 0px;
-  border-color: pink;
     -webkit-appearance: none;
 }
 
-/*For empty pages*/
-.empty-div {
-  font-size: 30px;
-  text-align: center;
-  color: gray;
-  display: block;
-  .icon-above {
-    font-size: 100px;
+textarea {
+	resize: none;
+	width: 100%;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+
+}
+
+.form-control {
+	border-radius: 2px;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+.alert {
+	margin-bottom: 10px;
+	border-radius: 2px;
+}
+
+.masterhead {
+	padding-top: 60px;
+	padding-bottom: 60px;
+	font-size: 24px;
+	// background: url('/assets/p_lab_team.png') no-repeat top center fixed;
+	// background-size: cover;
+	text-align: center;
+	margin-bottom: 10px;
+	width: 100%;
+
+	h1 {
+		// color: #e9eefb;
+		text-shadow: 1px 1px 2px black, 0 0 0.5em white, 0 0 0.7em white;
+		small {
+			font-size: 20px;
+			font-weight: 200;
+			// color: #e9eefb;
+		}
+	}
+}
+
+.main-navbar {
+	margin-bottom: 0;
+	background-color: #4A148C;
+	cursor: #FFFFFF;
+	border-bottom: 0;
+
+	.open > a{
+		background-color: white;
+		color: #4A148C
+	}
+
+	.dropdown-menu > li > a:hover{
+		background-color: #4A148C;
+		color: white;
+	}
+
+	input[type="submit"], button {
+		color: white;
+		border-color: white;
+	}
+
+	input[type="submit"]:hover, button:hover {
+		color: #4A148C;
+		background-color: white;
+	}
+
+	.icon-bar {
+		background: #FFF;
+	}
+	.navbar-toggle:hover {
+		.icon-bar {
+			background: #4A148C;
+		}
+	}
+	a {
+		color: white;
+	}
+	li {
+		a:hover {
+			background: transparent;
+		}
+		.link_btn {
+			padding: 8px 0;
+		}
+	}
+}
+
+.actions {
+	border-top: 1px solid #e8e8e8;
+	padding-top: 10px;
+	margin: 10px 0;
+
+	input[type="submit"], button {
+		width: 100%;
+		font-weight: normal;
+	}
+
+}
+
+.f-topics {
+	border-left: 1px solid #eee;
+	padding-left: 20px;
+	.topics {
+		padding: 10px;
+		border-radius: 2px;
+		background: #f8f8f8;
+		margin-bottom: 20px;
+		-webkit-box-shadow: 0px 0.5px 5px 0.5px #d9d9d9;
+		-moz-box-shadow: 0px 0.5px 5px 0.5px #d9d9d9;
+		box-shadow: 0px 0.5px 5px 0.5px #d9d9d9;
+	}
+}
+
+.main-footer {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-top: 50px;
+	color: #767676;
+	text-align: center;
+	border-top: 1px solid #e5e5e5;
+}
+
+.cover_page {
+    min-height: 200px;
+		//Texture background
+		background-color: hsl(2, 57%, 40%);
+		background-image: repeating-linear-gradient(transparent, transparent 50px, rgba(0,0,0,.4) 50px, rgba(0,0,0,.4) 53px, transparent 53px, transparent 63px, rgba(0,0,0,.4) 63px, rgba(0,0,0,.4) 66px, transparent 66px, transparent 116px, rgba(0,0,0,.5) 116px, rgba(0,0,0,.5) 166px, rgba(255,255,255,.2) 166px, rgba(255,255,255,.2) 169px, rgba(0,0,0,.5) 169px, rgba(0,0,0,.5) 179px, rgba(255,255,255,.2) 179px, rgba(255,255,255,.2) 182px, rgba(0,0,0,.5) 182px, rgba(0,0,0,.5) 232px, transparent 232px),
+		repeating-linear-gradient(270deg, transparent, transparent 50px, rgba(0,0,0,.4) 50px, rgba(0,0,0,.4) 53px, transparent 53px, transparent 63px, rgba(0,0,0,.4) 63px, rgba(0,0,0,.4) 66px, transparent 66px, transparent 116px, rgba(0,0,0,.5) 116px, rgba(0,0,0,.5) 166px, rgba(255,255,255,.2) 166px, rgba(255,255,255,.2) 169px, rgba(0,0,0,.5) 169px, rgba(0,0,0,.5) 179px, rgba(255,255,255,.2) 179px, rgba(255,255,255,.2) 182px, rgba(0,0,0,.5) 182px, rgba(0,0,0,.5) 232px, transparent 232px),
+		repeating-linear-gradient(125deg, transparent, transparent 2px, rgba(0,0,0,.2) 2px, rgba(0,0,0,.2) 3px, transparent 3px, transparent 5px, rgba(0,0,0,.2) 5px);
+		color: white;
+		margin: auto;
+}
+
+.credits {
+	color: #9e9e9e;
+  a {
+		color: #9e9e9e;
+    text-decoration: none;
   }
+}
+
+.user-form {
+	border: 1px solid #CCCCCC;
+	padding: 10px;
+	margin-bottom: 10px;
+	border-radius: 2px;
+	background-color: #fff;
 }

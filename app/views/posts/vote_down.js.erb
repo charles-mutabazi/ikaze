@@ -1,0 +1,7 @@
+$("#dislike-<%=@post.id%>").bind('ajax:success', function() {
+  var likes = parseInt("<%= @post.up_votes_count%>");
+  var dislikes = parseInt("<%= @post.down_votes_count%>");
+
+  $("#up-votes-count-<%=@post.id%>").html(likes);
+  $("#down-votes-count-<%=@post.id%>").html(dislikes);
+});

@@ -1,0 +1,42 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.user_info{
+    .user_info_card {
+      -moz-box-shadow: 0 0 3px #ddd;
+      -webkit-box-shadow: 0 0 3px #ddd;
+      box-shadow: 0 0 3px #ddd;
+      border-radius: 3px;
+      background: white;
+      padding: 0 10px 10px;
+      min-height: 283px;
+
+      h2 {
+        margin-top: 0;
+        padding-top: 5px;
+      }
+  }
+
+  img {
+    margin-bottom: 10px;
+  }
+
+  .circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    line-height: 50px
+  }
+  .likes{
+    background-color: #5cb85c;
+  }
+  .dislikes {
+    background-color: #d9534f;
+  }
+  .points {
+    background-color: #4A148C;
+  }
+}

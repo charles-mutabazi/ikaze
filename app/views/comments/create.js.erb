@@ -1,0 +1,5 @@
+
+$("#comments-<%=@comment.post_id%>").prepend("<%= j render @comment %>");
+$("#comment_content_<%=@post.id%>").val("");
+$("#comment-<%=@comment.id%>").hide().fadeIn('slow');
+$(".comment-count-<%=@post.id%>").val("10");

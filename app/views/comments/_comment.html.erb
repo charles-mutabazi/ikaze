@@ -1,0 +1,19 @@
+<div class="comments row" id="comment-<%=comment.id%>">
+  <div class="col-xs-1">
+    <%= image_tag comment.user.avatar.url(:sm_thumb), class: "img-rounded" %>
+  </div>
+  <div class="col-xs-11">
+    <p>
+    <% if comment.user.name %>
+      <strong><%= link_to comment.user.name.partition(' ').first.titleize, comment.user %></strong>
+    <% else %>
+      <strong><%= link_to comment.user.email.partition('@').first.titleize, comment.user %></strong> <!-- Elegant Code -->
+    <% end %> - <%= comment.content %>
+    </p>
+    <p class="time_ago"><%= time_ago_in_words(comment.created_at) %> ago
+      <% if current_user == comment.user %>
+        | <%= link_to "Delete", [comment.post, comment], method: :delete , data: {confirm: 'Are you sure?'}, remote: true %>
+      <% end %>
+    </p>
+  </div>
+</div>

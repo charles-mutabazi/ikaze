@@ -1,7 +1,20 @@
 require 'api_constraints'
 Rails.application.routes.draw do
 
-  get 'visuals/index'
+  root 'posts#index'
+
+  devise_for :users, controllers: {:omniauth_callbacks => "users/omniauth_callbacks", registrations: 'users/registrations'}
+  resources :authors
+  resources :users, :only => :show
+  resources :posts do
+    member do
+      get "like", to: "posts#vote_up"
+      get "dislike", to: "posts#vote_down"
+    end
+    resources :comments
+  end
+
+
 
 	namespace :api, defaults: {format: 'json'} do
 		scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
@@ -14,7 +27,9 @@ Rails.application.routes.draw do
       get :remove_all
     end
   end
+
   resources :visuals
+  get 'visuals/index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,6 @@
+<% if @user.errors %>
+  $("#reg-errors").html("<%= @user.errors.full_messages.to_sentence %>");
+  $("#reg-errors").fadeIn();
+<% else %>
+  $(window.location.replace("<%=escape_javascript root_path%>"))
+<% end %>
