@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   devise_for :users, controllers: {:omniauth_callbacks => "users/omniauth_callbacks", registrations: 'users/registrations'}
-  resources :authors
-  resources :users, :only => :show
+  # resources :authors
+  resources :users
+
   resources :posts do
     member do
       get "like", to: "posts#vote_up"

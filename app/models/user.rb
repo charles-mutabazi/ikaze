@@ -44,8 +44,8 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
-  has_many :posts
-  has_many :comments
+  has_many :posts, :dependent => :destroy # very important code
+  has_many :comments, :dependent => :destroy # very important code
 
   has_mongoid_attached_file :avatar, :styles => { :medium => "300x300#", :thumb => "100x100#", :sm_thumb => "32x32#" }, :default_url => "/images/:style/missing.png"
 
@@ -61,9 +61,9 @@ class User
       email: data["email"],
       password: Devise.friendly_token[0,20],
       avatar: data["image"],
+      gender: access_token["extra"]["raw_info"]["gender"],
       provider: access_token["provider"],
-      uid: access_token["uid"]
-      )
+      uid: access_token["uid"])
     end
     user
   end

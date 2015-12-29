@@ -1,9 +1,7 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :vote_up, :vote_down]
+  before_action :this_post, only: [:show, :edit, :update, :destroy, :vote_up, :vote_down]
   before_action :authenticate_user!, except: [:index, :show]
 
-  # GET /posts
-  # GET /posts.json
   def index
     @posts = Post.all.order('created_at DESC')
 
@@ -12,8 +10,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # GET /posts/1
-  # GET /posts/1.json
   def show
   end
 
@@ -56,9 +52,8 @@ class PostsController < ApplicationController
   end
 
   def vote_up
-    @post = Post.find(params[:id])
-    current_user.vote(@post, :up)
-
+    # @post = Post.find(params[:id])
+    current_user.vote(this_post, :up)
     respond_to do |format|
       format.html {redirect_to referrer}
       format.js
@@ -66,8 +61,8 @@ class PostsController < ApplicationController
   end
 
   def vote_down
-    @post = Post.find(params[:id])
-    current_user.vote(@post, :down)
+    # @post = Post.find(params[:id])
+    current_user.vote(this_post, :down)
 
     respond_to do |format|
       format.html {redirect_to referrer}
@@ -76,13 +71,13 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def this_post
+    @post = Post.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
-      params.require(:post).permit(:content)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def post_params
+    params.require(:post).permit(:content)
+  end
 end
