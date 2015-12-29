@@ -64,6 +64,32 @@ hr {
   }
 }
 
+.newpost-modal {
+  background-color: #F3E5F5;
+  .form-group {
+    margin-bottom: 5px;
+  }
+  textarea {
+  	border: 1px solid #E1BEE7;
+  }
+
+  input[type="submit"], button{
+    padding: 6px 30px;
+  }
+}
+
+.modal-footer{
+  background-color: #F3E5F5;
+  border-top: none !important;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  -moz-border-radius-bottomleft: 6px;
+  -moz-border-radius-bottomright: 6px;
+
+}
+
 .vote_counts {
   a, a:hover {
     text-decoration: none;

@@ -16,7 +16,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
           <% if user_signed_in? %>
-  	      	<%= link_to new_post_path, :class => "link_btn" do %>
+  	      	<%= link_to new_post_path, data: { modal: true }, :class => "link_btn" do %>
   	      		<button><i class='glyphicon glyphicon-pencil'></i> Your Impression</button>
   	      	<% end %>
         	<% end %>

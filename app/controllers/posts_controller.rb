@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   before_action :this_post, only: [:show, :edit, :update, :destroy, :vote_up, :vote_down]
   before_action :authenticate_user!, except: [:index, :show]
 
+  respond_to :html, :json
+
   def index
     @posts = Post.all.order('created_at DESC')
 
@@ -16,6 +18,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = current_user.posts.build
+    respond_modal_with @post
   end
 
   def edit
@@ -25,7 +28,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save!
       respond_to do |format|
-        format.html { redirect_to root_path, :notice => "New Post created!!!" }
+        format.html { redirect_to :back, :notice => "New Post created!!!" }
         format.js
       end
     else
@@ -55,7 +58,7 @@ class PostsController < ApplicationController
     # @post = Post.find(params[:id])
     current_user.vote(this_post, :up)
     respond_to do |format|
-      format.html {redirect_to referrer}
+      format.html {redirect_to :back}
       format.js
     end
   end
@@ -65,7 +68,7 @@ class PostsController < ApplicationController
     current_user.vote(this_post, :down)
 
     respond_to do |format|
-      format.html {redirect_to referrer}
+      format.html {redirect_to :back}
       format.js
     end
   end

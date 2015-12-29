@@ -17,6 +17,10 @@
 //= require_tree .
 //= require bootstrap-sprockets
 
+$(document).ready(function(){
+  $('textarea').autosize()
+});
+
 $(document).on ("click", "#signup-btn", function(event){
   event.preventDefault();
   $("#login-form").hide();

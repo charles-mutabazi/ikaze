@@ -1,3 +1,4 @@
 $("#all_posts").prepend('<%= j render @post %>');
 $("#post_content").val("");
+$("#mainModal").modal('hide');
 $("#post_<%=@post.id%>").hide().fadeIn("slow");
