@@ -5,17 +5,26 @@
     </div>
     <div class="col-sm-7 col-xs-12">
       <div class="user_info_card">
+
+        <% if @user == current_user %>
+        <%= link_to edit_user_registration_path, class: 'pull-right' do
+          icon('cog') + " Settings"
+        end %>
+        <% end %>
+
         <h2><%= @user.name? ? @user.name : @user.email.partition('@').first %></h2>
         <% if @user == current_user %>
         <p> <strong><i class="glyphicon glyphicon-envelope"></i> E-Mail:</strong> <%= @user.email %></p>
         <% end %>
-        <p>
-          <strong>Bio</strong> <br>
-          Maecenas sed diam eget risus varius blandit sit amet non magna.
-          Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
-          Etiam porta sem malesuada magna mollis euismod.
-        </p>
 
+        <% if @user.bio? %>
+        <div class="panel panel-info">
+          <div class="panel-body">
+            <strong>Bio</strong> <br>
+            <%= simple_format(@user.bio, class: "#{(@user.bio.size < 60) ? 'lead' : ''}")%>
+          </div>
+        </div>
+        <% end %>
         <p>
           <div class="row">
 

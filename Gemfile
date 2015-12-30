@@ -40,3 +40,5 @@ gem 'autosize-rails' # for autosize of the text area
 # gem 'bootstrap-validator-rails'
 
 gem 'font-awesome-sass', '~> 4.5.0' # for font awesome
+# gem "jquery-fileupload-rails"
+gem 'remotipart', '~> 1.2' #to make file upload work with image uploads

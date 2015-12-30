@@ -32,6 +32,7 @@ class User
   field :provider
   field :uid
   field :gender
+  field :bio
 
   ## Confirmable
   # field :confirmation_token,   type: String

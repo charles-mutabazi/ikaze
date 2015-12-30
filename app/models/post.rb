@@ -1,10 +1,15 @@
 class Post
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Paperclip
   include Mongo::Voteable
   # include MongoidVote::Voteable
 
   field :content
+
+  has_mongoid_attached_file :post_image, :styles => { :large => "400x200#", :medium => "300x150#", :thumb => "100x100#", :sm_thumb => "32x32#" }
+
+  validates_attachment_content_type :post_image, :content_type => /\Aimage\/.*\Z/
 
   validates_presence_of :content, :message => 'This Cannot be Blank'
   has_many :comments

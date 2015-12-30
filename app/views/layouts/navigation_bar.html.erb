@@ -11,24 +11,24 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="#">About</a></li>
+        <li><a href="#"> <%= icon('info-circle')%> About</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
           <% if user_signed_in? %>
   	      	<%= link_to new_post_path, data: { modal: true }, :class => "link_btn" do %>
-  	      		<button><i class='glyphicon glyphicon-pencil'></i> Your Impression</button>
+  	      		<button><%= icon('pencil')%></i> Your Impression</button>
   	      	<% end %>
         	<% end %>
         </li>
         <li>
           <%= link_to root_path do %>
-            <i class='glyphicon glyphicon-home'></i> Home
+            <%= icon('home')%> Home
           <% end %>
         </li>
         <% if user_signed_in? %>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <%= icon('user')%>
             <% if current_user.name? %>
               <%= current_user.name.partition(' ').first.titleize %><span class="caret"></span></a>
             <% else %>
@@ -37,18 +37,22 @@
             <% end %>
 
           <ul class="dropdown-menu">
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Notifications</a></li>
+            <li>
+              <%= link_to current_user do %>
+              <%= image_tag current_user.avatar.url(:sm_thumb), class: "img-circle" %> &nbsp;&nbsp;Profile
+              <% end %>
+            </li>
+            <li class="disabled"><a href="#"> <%= icon('exclamation-circle') %> Notifications</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">Advanced</li>
             <li>
               <%= link_to edit_user_registration_path do %>
-    						<i class='glyphicon glyphicon-cog'></i> Account
+    						<%= icon('cog')%> Account Settings
     					<% end %>
             </li>
             <li>
               <%= link_to destroy_user_session_path, :method => :delete do %>
-  						<i class='glyphicon glyphicon-log-out'></i> Sign Out
+  						<%= icon('sign-out')%> Sign Out
               <% end %>
           </li>
           </ul>

@@ -78,6 +78,10 @@ input[type="text"], input[type="email"], input[type="password"] {
 	border-radius: 2px;
 }
 
+.btn {
+	border-radius: 2px;
+}
+
 input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus {
 	outline: 0px;
     -webkit-appearance: none;

@@ -21,8 +21,8 @@ class PostsController < ApplicationController
     respond_modal_with @post
   end
 
-  def edit
-  end
+  # def edit
+  # end
 
   def create
     @post = current_user.posts.build(post_params)
@@ -36,8 +36,8 @@ class PostsController < ApplicationController
     end
   end
 
-  def update
-  end
+  # def update
+  # end
 
   def destroy
     @post.destroy
@@ -49,9 +49,11 @@ class PostsController < ApplicationController
   end
 
   def unvote
-    @post = Post.build(vote_params).find(params[:id])
-    current_user.unvote(@post)
-    #redirect_to question_url(params[:question_id]), :notice => "Unvote is successfully submitted."
+    current_user.unvote(this_post)
+    respond_to do |format|
+      format.html {redirect_to :back}
+      format.js
+    end
   end
 
   def vote_up
@@ -81,6 +83,6 @@ class PostsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content, :post_image)
   end
 end

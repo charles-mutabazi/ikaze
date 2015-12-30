@@ -1,4 +1,6 @@
 $("#all_posts").prepend('<%= j render @post %>');
 $("#post_content").val("");
+$('.image-preview').hide();
+$('#uploadBtn').val('');
 $("#mainModal").modal('hide');
 $("#post_<%=@post.id%>").hide().fadeIn("slow");
