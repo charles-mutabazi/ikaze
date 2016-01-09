@@ -21,14 +21,12 @@
     </div>
 
     <div class="fileUpload">
-      <span> <%= icon('camera', 'Add Photo', style: 'font-size:20px')%> </span>
+      <span> <%= icon('camera', 'Upload Image', style: 'font-size:20px')%> </span>
       <%= f.file_field :post_image, class:'upload', id: "uploadBtn" %>
     </div>
 
     <%= f.hidden_field :longitude, id: 'post_lon' %>
     <%= f.hidden_field :latitude, id: 'post_lat' %>
-
-    <%= @my_ip %>
 
     <div class="pull-right">
       <%= f.submit "Post", :disable_with => 'Posting....'%>
