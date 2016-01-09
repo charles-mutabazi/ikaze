@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Ikaze</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -66,7 +70,7 @@
         <% end %>
         <small class="credits">
           Ikaze &copy; <%= Time.now.year %> | <%= link_to "About", "#" %> |
-          Designed & Developed by: <%= link_to "Octan", "#" %>
+          Designed & Developed by: <%= link_to "Octan", "#" %> - Client IP: <%= request.remote_ip%>
         </small>
       </div>
       <!--Side bar layout ENDS here-->
