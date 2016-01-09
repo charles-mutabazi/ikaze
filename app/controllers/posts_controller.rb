@@ -18,15 +18,26 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = current_user.posts.build
+    # @my_ip = Socket.ip_address_list.detect(&:ipv4_private?).try(:ip_address)
+    db = MaxMindDB.new("#{Rails.root}/public/GeoLite2-City.mmdb")
+    current_ip = '210.146.64.142' # this is static TODO: make it dynamic with request.remote_ip
+    ret = db.lookup(current_ip)
+    lat = ret.location.latitude
+    lon = ret.location.longitude
 
-    # db = MaxMindDB.new("#{Rails.root}/public/GeoLite2-City.mmdb")
-    # ret = db.lookup('118.237.154.245')
-    # request.ip = '118.237.154.245'
-    #
-    # @client_location = request.location
-    request.remote_ip
-    @my_ip = Socket.ip_address_list.detect(&:ipv4_private?).try(:ip_address)
+    #this might be useful in the future...
+    # ret.found? # => true
+    # ret.country.name # => 'United States'
+    # ret.country.name('zh-CN') # => '美国'
+    # ret.country.iso_code # => 'US'
+    # ret.city.name(:fr) # => 'Mountain View'
 
+    #also check out the local_ip() located in app/contollers/application.rb
+
+    if (params[:longitude] == nil) || (params[:latitude] == nil)
+      @post[:longitude] = lon
+      @post[:latitude] = lat
+    end
     respond_modal_with @post
   end
 

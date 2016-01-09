@@ -28,6 +28,8 @@
     <%= f.hidden_field :longitude, id: 'post_lon' %>
     <%= f.hidden_field :latitude, id: 'post_lat' %>
 
+    <%= request.location.city %>
+
     <div class="pull-right">
       <%= f.submit "Post", :disable_with => 'Posting....'%>
     </div>

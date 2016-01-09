@@ -78,7 +78,7 @@ $(document).ready(function() {
         document.getElementById('post_lat').value = position.coords.latitude;
         document.getElementById('post_lon').value = position.coords.longitude;
       }, function() {
-        alert('We couldn\'t find your position.');
+        console.log('We couldn\'t find your position.')
       });
     } else {
       alert('Your browser doesn\'t support geolocation.');
