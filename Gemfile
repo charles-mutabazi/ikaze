@@ -42,3 +42,10 @@ gem 'autosize-rails' # for autosize of the text area
 gem 'font-awesome-sass', '~> 4.5.0' # for font awesome
 # gem "jquery-fileupload-rails"
 gem 'remotipart', '~> 1.2' #to make file upload work with image uploads
+
+# gem 'activeadmin-mongoid'
+gem 'rails_admin', :git => "https://github.com/sferik/rails_admin.git"
+
+# gem 'ip2location_ruby'
+gem 'maxminddb'
+gem 'geocoder'

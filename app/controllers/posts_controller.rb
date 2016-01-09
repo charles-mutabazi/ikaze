@@ -18,6 +18,15 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = current_user.posts.build
+
+    # db = MaxMindDB.new("#{Rails.root}/public/GeoLite2-City.mmdb")
+    # ret = db.lookup('118.237.154.245')
+    # request.ip = '118.237.154.245'
+    #
+    # @client_location = request.location
+    request.remote_ip
+    @my_ip = Socket.ip_address_list.detect(&:ipv4_private?).try(:ip_address)
+
     respond_modal_with @post
   end
 
@@ -26,6 +35,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    # @post[:coordinates] = [params[:longitude], params[:latitude]]
     if @post.save!
       respond_to do |format|
         format.html { redirect_to :back, :notice => "New Post created!!!" }
@@ -83,6 +93,6 @@ class PostsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    params.require(:post).permit(:content, :post_image)
+    params.require(:post).permit(:content, :post_image, :longitude, :latitude)
   end
 end

@@ -69,35 +69,18 @@ $(document).ready(function() {
             $('.image-preview').hide();
         });
     }
+    //get current coordinates
+    if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var lat = position.coords.latitude
+        var lon = position.coords.longitude
+
+        document.getElementById('post_lat').value = position.coords.latitude;
+        document.getElementById('post_lon').value = position.coords.longitude;
+      }, function() {
+        alert('We couldn\'t find your position.');
+      });
+    } else {
+      alert('Your browser doesn\'t support geolocation.');
+    }
   });
-
-  // $(window).load(function() {
-  //   $('.post_image').find('img').each(function() {
-  //       var imgClass = (this.width / this.height > 1) ? 'wide' : 'tall';
-  //       $(this).addClass(imgClass);
-  //   })
-  // })
-
-// $(document).ready(function(){
-//   $("#new_user")
-//   .bootstrapValidator({
-//     email: {
-//       validators: {
-//         notEmpty: {
-//           message: 'The email address is required and can\'t be empty'
-//         },
-//         emailAddress: {
-//           message: 'The input is not a valid email address'
-//         }
-//       }
-//     },
-//   })
-//   .on('success.form.bv', function(e) {
-//     // Called when the form is valid
-//
-//     var $form = $(e.target);
-//     if ($form.data('remote') && $.rails !== undefined) {
-//       e.preventDefault();
-//     }
-//   });
-// });

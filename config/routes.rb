@@ -1,6 +1,7 @@
 require 'api_constraints'
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'posts#index'
 
   devise_for :users, controllers: {:omniauth_callbacks => "users/omniauth_callbacks", registrations: 'users/registrations'}
@@ -20,6 +21,9 @@ Rails.application.routes.draw do
 	namespace :api, defaults: {format: 'json'} do
 		scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
 			resources :gps_coordinates
+      resources :posts do
+        resources :comments
+      end
 		end
 	end
 
