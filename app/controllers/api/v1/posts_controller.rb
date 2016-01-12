@@ -13,11 +13,11 @@ module Api
 			end
 
 			def create
-				respond_with Post.create(gps_coordinate_params)
+				respond_with Post.create(post_params)
 			end
 
 			def update
-        respond_with Post.update(params[:id], params[:gps_coordinate])
+        respond_with Post.update(params[:id], params[:post])
       end
 
 			def destroy
