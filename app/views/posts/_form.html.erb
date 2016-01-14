@@ -16,13 +16,15 @@
   		<%= f.text_area :content, size: "50x2", :placeholder => 'What is your impression?' %>
   	</div>
 
-    <div class="image-preview" style="display:none">
-    <%= icon('times', class:"pull-right deletePhoto")%>
-    </div>
+    <div class="pull-left">
+      <div class="image-preview" style="display:none">
+      <%= icon('times', class:"pull-right deletePhoto")%>
+      </div>
 
-    <div class="fileUpload">
-      <span> <%= icon('camera', 'Upload Image', style: 'font-size:20px')%> </span>
-      <%= f.file_field :post_image, class:'upload', id: "uploadBtn" %>
+      <div class="fileUpload">
+        <span> <%= icon('camera', 'Upload Image', style: 'font-size:20px')%> </span>
+        <%= f.file_field :post_image, class:'upload', id: "uploadBtn" %>
+      </div>
     </div>
 
     <%= f.hidden_field :longitude, id: 'post_lon' %>
@@ -34,3 +36,5 @@
   </div>
 
 <% end %>
+
+<%# TODO: fix the modal form... to display the image to upload and auto expanding textarea /views/posts/new.html.erb %>
