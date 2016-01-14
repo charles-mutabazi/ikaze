@@ -45,8 +45,8 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
-  has_many :posts, :dependent => :destroy # very important code
-  has_many :comments, :dependent => :destroy # very important code
+  has_many :posts, dependent: :destroy # very important code
+  has_many :comments, dependent: :destroy # very important code
 
   has_mongoid_attached_file :avatar, :styles => { :medium => "300x300#", :thumb => "100x100#", :sm_thumb => "32x32#" }, :default_url => "/images/:style/missing.png"
 

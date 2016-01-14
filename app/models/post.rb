@@ -9,8 +9,8 @@ class Post
   field :content
   # field :coordinates, :type => Array, default: []
   # field :address
-  field :longitude, type: Float
-  field :latitude, type: Float
+  field :longitude
+  field :latitude
 
   # include Geocoder::Model::Mongoid
   # reverse_geocoded_by :coordinates, :skip_index => true
@@ -33,9 +33,9 @@ class Comment
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :content
+  field :comment_text
 
-  validates_presence_of :content
+  validates_presence_of :comment_text
 
   belongs_to :post
   belongs_to :user

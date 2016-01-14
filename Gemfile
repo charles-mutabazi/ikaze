@@ -49,3 +49,4 @@ gem 'rails_admin', :git => "https://github.com/sferik/rails_admin.git"
 # gem 'ip2location_ruby'
 gem 'maxminddb'
 gem 'geocoder'
+# gem 'mongoid_commentable'

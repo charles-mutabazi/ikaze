@@ -68,7 +68,7 @@
             <%= image_tag current_user.avatar.url(:sm_thumb), class: "img-rounded" %>
           </div>
           <div class="col-xs-11">
-            <%= f.text_field :content, :placeholder => "Add your comment...", id: "comment_content_#{post.id}" %>
+            <%= f.text_field :comment_text, :placeholder => "Add your comment...", id: "comment_content_#{post.id}" %>
           </div>
         </div>
       <% end %>

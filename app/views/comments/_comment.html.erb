@@ -8,7 +8,7 @@
       <strong><%= link_to comment.user.name.partition(' ').first.titleize, comment.user %></strong>
     <% else %>
       <strong><%= link_to comment.user.email.partition('@').first.titleize, comment.user %></strong> <!-- Elegant Code -->
-    <% end %> - <%= comment.content %>
+    <% end %> - <%= comment.comment_text %>
     </p>
     <p class="time_ago"><%= time_ago_in_words(comment.created_at) %> ago
       <% if current_user == comment.user %>

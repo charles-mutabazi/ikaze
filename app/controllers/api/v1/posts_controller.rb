@@ -5,11 +5,17 @@ module Api
 			respond_to :json
 
 			def index
-				respond_with Post.all
+				posts = Post.all()
+				# respond_with posts
+
+				# much more cleaner json
+				respond_with(posts, :only => [:content, :created_at, :latitude, :longitude, :post_image_file_name, :votes ], :include => {:comments => { :only => [:comment_text, :created_at] }, :user => {:only => [:name, :email, :_id, :avatar_file_name]}})
+
 			end
 
 			def show
-				respond_with Post.find(params[:id])
+				post = Post.find(params[:id])
+				respond_with(post, :only => [:content, :created_at, :latitude, :longitude, :post_image_file_name, :votes ], :include => {:comments => { :only => [:comment_text, :created_at] }, :user => {:only => [:name, :email, :_id]}})
 			end
 
 			def create
