@@ -39,6 +39,7 @@ class PostsController < ApplicationController
       @post[:latitude] = lat
     end
     respond_modal_with @post
+    # TODO: the modal is not getting coordinates - probably js issue to be fixed later...
   end
 
   # def edit
