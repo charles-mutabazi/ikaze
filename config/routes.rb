@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
 	namespace :api, defaults: {format: 'json'} do
 		scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
-			resources :gps_coordinates
+			resources :my_places
       resources :users
       resources :posts do
         resources :comments
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 		end
 	end
 
-  resources :gps_coordinates do
+  resources :my_places do
     collection do
       get :remove_all
     end
