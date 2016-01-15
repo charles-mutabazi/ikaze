@@ -27,7 +27,7 @@ module Api
 
 			private
       def my_place_params
-				params.require(:my_place).permit(:device_id, :longitude, :latitude, :captured_at)
+				params.require(:my_place).permit(:device_id, :address, :longitude, :latitude, :captured_at)
       end
 
 
