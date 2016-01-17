@@ -11,10 +11,12 @@ class MyPlacesController < ApplicationController
   # DELETE /my_places/1
   # DELETE /my_places/1.json
   def destroy
+    @my_place = MyPlace.find(params[:id])
     @my_place.destroy
+
     respond_to do |format|
-      format.html { redirect_to my_place_url, notice: 'Gps coordinate was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to :back }
+      format.js
     end
   end
 
